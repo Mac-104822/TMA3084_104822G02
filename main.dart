@@ -1,37 +1,15 @@
-import 'dart:io';
-
+import 'myLib.dart' as emp;
+ 
 void main() {
-    String? pizza_size;
-    int pizza_price = -1;
-    int quantity;
-    int total;
-
-    print("Pizza Price: \"Small: 5 USD, Medium: 7 USD, Large: 10 USD\"");
-    print("Please enter your pizza size (small, medium, or large):");
-
-    while(pizza_price == -1) {
-        pizza_size = stdin.readLineSync()?.trim().toLowerCase();
-        switch(pizza_size) {
-            case 'small':
-                pizza_price = 5;
-                break;
-
-            case 'medium':
-                pizza_price = 7;
-                break;
-
-            case 'large':
-                pizza_price = 10;
-                break;
-
-            default:
-                print("Value invalid! Please re-enter your pizza size (small, medium, large):");
-        }
-    }
-
-    print("How many pizzas do you want of $pizza_size?");
-    quantity = int.parse(stdin.readLineSync()!);
-
-    total = pizza_price * quantity;
-    print("Your Total Payment is: \$$total");
+  double extraPayPerHr;
+  var william = emp.Employee(
+      'Manager', 'Madrid', 5000, 7);
+  if (william.salary >= 4000) {
+    extraPayPerHr = 10;
+  } else {
+    extraPayPerHr = 20;
+  }
+  double total = william.salary +
+      (william.overtimeHr * extraPayPerHr);
+  print('Total Salary = \$$total USD');
 }
